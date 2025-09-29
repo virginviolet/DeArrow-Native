@@ -75,32 +75,6 @@
             width: 20px;
             height: 20px;
             z-index: -1;
-            /* Center-origin scale */
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(1);
-        }
-        
-        /* Re-do the animation with `translate(-50%, -50%)` */
-        @keyframes splashCentered {
-            0% {
-                transform: translate(-50%, -50%) scale(1.1);
-            }
-            40% {
-                transform: translate(-50%, -50%) scale(1);
-                background: var(--cb-forground-button-color);
-                box-shadow: 0 -18px 0 -8px var(--cb-forground-button-color), 16px -8px 0 -8px var(--cb-forground-button-color), 16px 8px 0 -8px var(--cb-forground-button-color), 0 18px 0 -8px var(--cb-forground-button-color), -16px 8px 0 -8px var(--cb-forground-button-color), -16px -8px 0 -8px var(--cb-forground-button-color);
-            }
-            100% {
-                background: var(--cb-forground-button-color);
-                box-shadow: 0 -32px 0 -10px transparent, 28px -16px 0 -10px transparent, 28px 16px 0 -10px transparent, 0 32px 0 -10px transparent, -28px 16px 0 -10px transparent, -28px -16px 0 -10px transparent;
-            }
-        }
-
-        /* Add the new animation */
-        .cbChecklistBox:not(.cbNoAnim) input:checked + label {
-            animation: splashCentered 0.6s ease forwards !important;
         }
         
         /* Disable border when radio button checked */
@@ -108,11 +82,7 @@
             border: 0px !important;
         }
         
-        /* Recolor square checkbox text */
-        span#cbSubmitMenu > div.casualVoteMenuInner > div > div div.cbChecklistBox.cbSquare div.cbChecklistTextBox div.cbChecklistBoxTitle {
-            color: var(--yt-spec-text-secondary);
-        }
-        
+        /* Casual mode popup - Square checkboxes */
         .cbChecklistBox.cbSquare input {
             border: 2px solid var(--paper-checkbox-unchecked-color, var(--primary-text-color)) !important;
             border-radius: 2px !important;
@@ -120,6 +90,11 @@
 
         .cbChecklistBox.cbNoAnim input:checked {
             border: 0px !important;
+        }
+        
+        /* Casual mode popup - Square checkbox text */
+        span#cbSubmitMenu > div.casualVoteMenuInner > div > div div.cbChecklistBox.cbSquare div.cbChecklistTextBox div.cbChecklistBoxTitle {
+            color: var(--yt-spec-text-secondary);
         }
         
         span#cbSubmitMenu div.casualVoteMenuInner div div div.cbChecklistBox.cbSquare > div.cbChecklistCheckboxParent > svg {
