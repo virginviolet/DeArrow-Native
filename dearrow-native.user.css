@@ -79,7 +79,7 @@
         
         /* Disable border when radio button checked */
         .cbCasualYesOrNo > .cbChecklistBox > .cbChecklistCheckboxParent:has(input:checked) {
-            border: 0px !important;
+            border: 1px solid transparent !important;
         }
         
         /* Casual mode popup - Square checkboxes */
