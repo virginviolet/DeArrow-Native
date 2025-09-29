@@ -1,0 +1,142 @@
+    /* ==UserStyle==
+@name           YouTube - DeArrow Native
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    Make DeArrow fit YouTube's design better.
+@author         Violet
+==/UserStyle== */
+    @-moz-document domain("youtube.com") {
+        #cbSubmitMenu:has(.casualVoteMenuInner) {
+            /* Casual mode vote popup window */
+            box-shadow: 0 0 24px 12px var(--paper-dialog-shadow-color, rgba(0, 0, 0, .15));
+            color: var(--paper-dialog-color, var(--primary-text-color));
+            font-family: "Roboto", "Noto", sans-serif;
+            line-height: 20px;
+            background-color: var(--paper-dialog-background-color, var(--primary-background-color)) !important;
+            backdrop-filter: unset !important;
+            --yt-spec-text-primary: white;
+            border-radius: 12px;
+            z-index: 9000;
+            width: unset !important;
+            min-width: var(--ytd-watch-flexy-sidebar-min-width) !important;
+        }
+        .casualVoteMenuInner {
+            --cb-forground-button-color: var(--yt-spec-discover-green) !important;
+            padding: 0px !important;
+        }
+
+        /* Casual mode popup - header*/
+        .cbCasualVoteTitle {
+            padding: 24px 24px 0;
+            font-size: 3.2rem !important;
+            font-family: "YouTube Sans", "YT SANS";
+            font-weight: var(--yt-formatted-string-bold-font-weight, 500);
+            justify-content: space-around !important;
+        }
+
+        /* Casual mode popup - header icon */
+        img.cbCasualVoteTitleLogo {
+            height: 37px !important;
+            padding: 0px !important;
+        }
+
+        /* Add empty space after the title (for space-around alignment) */
+        .cbCasualVoteTitle:after {
+            content: "";
+        }
+
+        /* Casual mode popup - original title */
+        .cbCasualVoteOriginalTitle {
+            /* font-size: 2rem;
+            line-height: 2.8rem;
+            font-weight: 700; */
+            padding: 16px 24px 24px;
+            font-size: 1.4rem !important;
+        }
+
+        /* Casual mode popup - Radio buttons */
+        #cbSubmitMenu > .casualVoteMenuInner [type=checkbox] {
+            width: 30px;
+            height: 30px;
+        }
+        .cbChecklistCheckboxParent {
+            display: flex !important;
+        }
+        .cbCasualYesOrNo > div.cbChecklistBox > div.cbChecklistCheckboxParent > label {
+            width: 26px;
+            height: 26px;
+            z-index: -1;
+            /* Center-origin scale */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        /* Re-do the animation with `translate(-50%, -50%)` */
+        @keyframes splashCentered {
+            0% {
+                transform: translate(-50%, -50%) cale(1.1);
+            }
+            40% {
+                transform: translate(-50%, -50%) scale(1);
+                background: var(--cb-forground-button-color);
+                box-shadow: 0 -18px 0 -8px var(--cb-forground-button-color), 16px -8px 0 -8px var(--cb-forground-button-color), 16px 8px 0 -8px var(--cb-forground-button-color), 0 18px 0 -8px var(--cb-forground-button-color), -16px 8px 0 -8px var(--cb-forground-button-color), -16px -8px 0 -8px var(--cb-forground-button-color);
+            }
+            100% {
+                background: var(--cb-forground-button-color);
+                box-shadow: 0 -32px 0 -10px transparent, 28px -16px 0 -10px transparent, 28px 16px 0 -10px transparent, 0 32px 0 -10px transparent, -28px 16px 0 -10px transparent, -28px -16px 0 -10px transparent;
+            }
+        }
+        .cbChecklistBox:not(.cbNoAnim) input:checked + label {
+            animation: splashCentered 0.6s ease forwards !important;
+        }
+        .cbChecklistBox:not(.cbNoAnim) input:checked + label {}
+        span#cbSubmitMenu div.casualVoteMenuInner div div div.cbChecklistBox.cbSquare > div.cbChecklistCheckboxParent > svg {
+            width: 22px;
+            height: 18px;
+        }
+
+        /* Style the casual mode "Submit" button */
+        .cbVoteButtonContainer > .cbNoticeButton:disabled {
+            color: var(--yt-spec-icon-disabled);
+            background-color: var(--yt-spec-additive-background) !important;
+        }
+        .cbVoteButtonContainer > .cbNoticeButton {
+            /* background-color: var(--yt-spec-inverted-background);
+            background-color: var(--yt-spec-discover-green);*/
+            font-size: 14px;
+        }
+
+        /* Add an overlay behind the window and the casual mode vote button */
+        #content:has(.casualVoteMenuInner):after {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: rgba(0, 0, 0, 0.5) !important;
+            z-index: 8999;
+            ;
+        }
+
+        /* Add a background to the casual mode vote button so that it pokes out from the overlay */
+        .cbCasualVoteButton {
+            position: relative;
+        }
+        #title.style-scope.ytd-watch-metadata:has(.casualVoteMenuInner) > div > button.cbCasualVoteButton:before {
+            content: "";
+            background: var(--paper-dialog-background-color, var(--primary-background-color));
+            border-radius: 3px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            aspect-ratio: 1 / 1;
+            width: calc(100% + 0.3em);
+            z-index: -1;
+        }
+        #title.style-scope.ytd-watch-metadata:has(.casualVoteMenuInner) > div.cbTitleButtonContainer {
+            z-index: 9000 !important;
+        }
+    }
