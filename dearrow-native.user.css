@@ -8,25 +8,24 @@
     @-moz-document domain("youtube.com") {
         #cbSubmitMenu:has(.casualVoteMenuInner) {
             /* Casual mode vote popup window */
+            --yt-spec-text-primary: unset !important;
+            color: var(--yt-spec-text-primary) !important;
             box-shadow: 0 0 24px 12px var(--paper-dialog-shadow-color, rgba(0, 0, 0, .15));
-            color: var(--paper-dialog-color, var(--primary-text-color));
             font-family: "Roboto", "Noto", sans-serif;
             line-height: 20px;
             background-color: var(--paper-dialog-background-color, var(--primary-background-color)) !important;
             backdrop-filter: unset !important;
-            --yt-spec-text-primary: white;
             border-radius: 12px;
-            z-index: 9000;
             width: unset !important;
-            min-width: var(--ytd-watch-flexy-sidebar-min-width) !important;
+            min-width: var(--ytd-watch-flexy-sidebar-min-width);
         }
-        .casualVoteMenuInner {
-            --cb-forground-button-color: var(--yt-spec-discover-green) !important;
+        #cbSubmitMenu>.casualVoteMenuInner {
+            --cb-forground-button-color: var(--yt-spec-themed-green) !important;
             padding: 0px !important;
         }
 
         /* Casual mode popup - header*/
-        .cbCasualVoteTitle {
+        #cbSubmitMenu>.casualVoteMenuInner>.cbCasualVoteTitle {
             padding: 24px 24px 0;
             font-size: 3.2rem !important;
             font-family: "YouTube Sans", "YT SANS";
@@ -35,18 +34,18 @@
         }
 
         /* Casual mode popup - header icon */
-        img.cbCasualVoteTitleLogo {
+        #cbSubmitMenu>.casualVoteMenuInner>.cbCasualVoteTitle>img.cbCasualVoteTitleLogo {
             height: 37px !important;
             padding: 0px !important;
         }
 
         /* Add empty space after the title (for space-around alignment) */
-        .cbCasualVoteTitle:after {
+        #cbSubmitMenu>.casualVoteMenuInner>.cbCasualVoteTitle:after {
             content: "";
         }
 
         /* Casual mode popup - original title */
-        .cbCasualVoteOriginalTitle {
+        #cbSubmitMenu>.casualVoteMenuInner>.cbCasualVoteOriginalTitle {
             /* font-size: 2rem;
             line-height: 2.8rem;
             font-weight: 700; */
@@ -54,68 +53,79 @@
             font-size: 1.4rem !important;
         }
 
-        /* Casual mode popup - Check boxes (radio and square) */
+        /* Casual mode popup - check boxes (radio and square) */
         #cbSubmitMenu > .casualVoteMenuInner [type=checkbox] {
             width: 20px;
             height: 20px;
         }
-        
+
         /* Casual mode popup - Radio buttons */
-        .cbCasualYesOrNo > .cbChecklistBox > .cbChecklistCheckboxParent {
+        span#cbSubmitMenu > div.casualVoteMenuInner > div.cbCasualYesOrNo > .cbChecklistBox > .cbChecklistCheckboxParent {
             display: flex !important;
             border: 1px solid var(--paper-checkbox-unchecked-color, var(--primary-text-color)) !important;
             border-radius: 50%;
         }
-        
-        .cbChecklistCheckboxParent input {
+
+        span#cbSubmitMenu > div.casualVoteMenuInner > .cbCasualYesOrNo > .cbChecklistBox > .cbChecklistCheckboxParent input {
             border: none !important;
         }
-        
-        .cbCasualYesOrNo > div.cbChecklistBox > div.cbChecklistCheckboxParent > label {
+
+        span#cbSubmitMenu > div.casualVoteMenuInner > .cbCasualYesOrNo > div.cbChecklistBox > div.cbChecklistCheckboxParent > label {
             width: 20px;
             height: 20px;
             z-index: -1;
         }
-        
-        /* Disable border when radio button checked */
-        .cbCasualYesOrNo > .cbChecklistBox > .cbChecklistCheckboxParent:has(input:checked) {
+
+        /* Hide border when radio button checked */
+        span#cbSubmitMenu > div.casualVoteMenuInner > .cbCasualYesOrNo > .cbChecklistBox > .cbChecklistCheckboxParent:has(input:checked) {
             border: 1px solid transparent !important;
         }
-        
+
+        /* Casual mode popup - radio button text ("Yes" / "No") */
+        #cbSubmitMenu > .casualVoteMenuInner > .cbCasualYesOrNo > .cbChecklistBox > .cbChecklistTextBox > div.cbChecklistBoxTitle {
+            font-weight: 500;
+        }
+
         /* Casual mode popup - Square checkboxes */
-        .cbChecklistBox.cbSquare input {
+        #cbSubmitMenu > .casualVoteMenuInner > div > div > .cbChecklistBox.cbSquare input {
             border: 2px solid var(--paper-checkbox-unchecked-color, var(--primary-text-color)) !important;
             border-radius: 2px !important;
         }
 
-        .cbChecklistBox.cbNoAnim input:checked {
+        #cbSubmitMenu > .casualVoteMenuInner > div > div > .cbChecklistBox.cbNoAnim input:checked {
             border: 0px !important;
         }
-        
+
         /* Casual mode popup - Square checkbox text */
-        span#cbSubmitMenu > div.casualVoteMenuInner > div > div div.cbChecklistBox.cbSquare div.cbChecklistTextBox div.cbChecklistBoxTitle {
-            color: var(--yt-spec-text-secondary);
+        span#cbSubmitMenu > div.casualVoteMenuInner > div > div div.cbChecklistBox.cbSquare > div.cbChecklistTextBox div.cbChecklistBoxTitle {
+            font-weight: 500;
         }
-        
-        span#cbSubmitMenu div.casualVoteMenuInner div div div.cbChecklistBox.cbSquare > div.cbChecklistCheckboxParent > svg {
+
+        span#cbSubmitMenu > div.casualVoteMenuInner > div > div div.cbChecklistBox.cbSquare > div.cbChecklistCheckboxParent > svg {
             margin-top: -1px !important;
             width: 12px;
             height: 12px;
         }
+
+        /* Casual mode popup - vote count text */
+        span#cbSubmitMenu > div.casualVoteMenuInner > div > div > div.cbChecklistBox.cbSquare.cbNoAnim > div.cbChecklistTextBox > div.cbChecklistBoxSubtitle {
+            color: var(--yt-spec-text-secondary);
+            padding-top: 0px;
+        }
         
         /* Casual mode popup - "Submit" button */
-        .cbVoteButtonContainer > .cbNoticeButton:disabled {
+        #cbSubmitMenu > .casualVoteMenuInner > .cbVoteButtonContainer > .cbNoticeButton:disabled {
             color: var(--yt-spec-icon-disabled);
             background-color: var(--yt-spec-additive-background) !important;
         }
-        .cbVoteButtonContainer > .cbNoticeButton {
+        #cbSubmitMenu > .casualVoteMenuInner > .cbVoteButtonContainer > .cbNoticeButton {
             /* background-color: var(--yt-spec-inverted-background);
             background-color: var(--yt-spec-discover-green);*/
             font-size: 14px;
         }
 
         /* Casual mode popup - Add an overlay behind the window and the vote button that opens it */
-        #content:has(.casualVoteMenuInner):after {
+        #content:has(#cbSubmitMenu > .casualVoteMenuInner):after {
             content: '' !important;
             position: absolute !important;
             top: 0 !important;
@@ -124,17 +134,16 @@
             height: 100% !important;
             background: rgba(0, 0, 0, 0.5) !important;
             z-index: 8999;
-            ;
         }
 
         /* Add a background to the casual mode vote button so that it can poke out from the overlay */
         #title.style-scope.ytd-watch-metadata > div > button.cbCasualVoteButton {
             position: relative;
         }
-        #title.style-scope.ytd-watch-metadata:has(.casualVoteMenuInner) > div > button.cbCasualVoteButton:before {
+        #title.style-scope.ytd-watch-metadata:has(#cbSubmitMenu > .casualVoteMenuInner) > div > button.cbCasualVoteButton:before {
             content: "";
             background: var(--paper-dialog-background-color, var(--primary-background-color));
-            border-radius: 3px;
+            border-radius: 5px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -143,7 +152,7 @@
             width: calc(100% + 0.3em);
             z-index: -1;
         }
-        #title.style-scope.ytd-watch-metadata:has(.casualVoteMenuInner) > div.cbTitleButtonContainer > .cbCasualVoteButton {
+        #title.style-scope.ytd-watch-metadata:has(#cbSubmitMenu > .casualVoteMenuInner) > div.cbTitleButtonContainer > .cbCasualVoteButton {
             z-index: 9000 !important;
         }
     }
