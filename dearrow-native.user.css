@@ -54,17 +54,26 @@
             font-size: 1.4rem !important;
         }
 
-        /* Casual mode popup - Radio buttons */
+        /* Casual mode popup - Check boxes (radio and square) */
         #cbSubmitMenu > .casualVoteMenuInner [type=checkbox] {
-            width: 30px;
-            height: 30px;
+            width: 20px;
+            height: 20px;
         }
-        .cbChecklistCheckboxParent {
+        
+        /* Casual mode popup - Radio buttons */
+        .cbCasualYesOrNo > .cbChecklistBox > .cbChecklistCheckboxParent {
             display: flex !important;
+            border: 1px solid var(--paper-checkbox-unchecked-color, var(--primary-text-color)) !important;
+            border-radius: 50%;
         }
+        
+        .cbChecklistCheckboxParent input {
+            border: none !important;
+        }
+        
         .cbCasualYesOrNo > div.cbChecklistBox > div.cbChecklistCheckboxParent > label {
-            width: 26px;
-            height: 26px;
+            width: 20px;
+            height: 20px;
             z-index: -1;
             /* Center-origin scale */
             position: absolute;
@@ -72,10 +81,11 @@
             left: 50%;
             transform: translate(-50%, -50%) scale(1);
         }
+        
         /* Re-do the animation with `translate(-50%, -50%)` */
         @keyframes splashCentered {
             0% {
-                transform: translate(-50%, -50%) cale(1.1);
+                transform: translate(-50%, -50%) scale(1.1);
             }
             40% {
                 transform: translate(-50%, -50%) scale(1);
@@ -87,16 +97,38 @@
                 box-shadow: 0 -32px 0 -10px transparent, 28px -16px 0 -10px transparent, 28px 16px 0 -10px transparent, 0 32px 0 -10px transparent, -28px 16px 0 -10px transparent, -28px -16px 0 -10px transparent;
             }
         }
+
+        /* Add the new animation */
         .cbChecklistBox:not(.cbNoAnim) input:checked + label {
             animation: splashCentered 0.6s ease forwards !important;
         }
-        .cbChecklistBox:not(.cbNoAnim) input:checked + label {}
-        span#cbSubmitMenu div.casualVoteMenuInner div div div.cbChecklistBox.cbSquare > div.cbChecklistCheckboxParent > svg {
-            width: 22px;
-            height: 18px;
+        
+        /* Disable border when radio button checked */
+        .cbCasualYesOrNo > .cbChecklistBox > .cbChecklistCheckboxParent:has(input:checked) {
+            border: 0px !important;
+        }
+        
+        /* Recolor square checkbox text */
+        span#cbSubmitMenu > div.casualVoteMenuInner > div > div div.cbChecklistBox.cbSquare div.cbChecklistTextBox div.cbChecklistBoxTitle {
+            color: var(--yt-spec-text-secondary);
+        }
+        
+        .cbChecklistBox.cbSquare input {
+            border: 2px solid var(--paper-checkbox-unchecked-color, var(--primary-text-color)) !important;
+            border-radius: 2px !important;
         }
 
-        /* Style the casual mode "Submit" button */
+        .cbChecklistBox.cbNoAnim input:checked {
+            border: 0px !important;
+        }
+        
+        span#cbSubmitMenu div.casualVoteMenuInner div div div.cbChecklistBox.cbSquare > div.cbChecklistCheckboxParent > svg {
+            margin-top: -1px !important;
+            width: 12px;
+            height: 12px;
+        }
+        
+        /* Casual mode popup - "Submit" button */
         .cbVoteButtonContainer > .cbNoticeButton:disabled {
             color: var(--yt-spec-icon-disabled);
             background-color: var(--yt-spec-additive-background) !important;
@@ -107,7 +139,7 @@
             font-size: 14px;
         }
 
-        /* Add an overlay behind the window and the casual mode vote button */
+        /* Casual mode popup - Add an overlay behind the window and the vote button that opens it */
         #content:has(.casualVoteMenuInner):after {
             content: '' !important;
             position: absolute !important;
@@ -120,8 +152,8 @@
             ;
         }
 
-        /* Add a background to the casual mode vote button so that it pokes out from the overlay */
-        .cbCasualVoteButton {
+        /* Add a background to the casual mode vote button so that it can poke out from the overlay */
+        #title.style-scope.ytd-watch-metadata > div > button.cbCasualVoteButton {
             position: relative;
         }
         #title.style-scope.ytd-watch-metadata:has(.casualVoteMenuInner) > div > button.cbCasualVoteButton:before {
@@ -136,7 +168,7 @@
             width: calc(100% + 0.3em);
             z-index: -1;
         }
-        #title.style-scope.ytd-watch-metadata:has(.casualVoteMenuInner) > div.cbTitleButtonContainer {
+        #title.style-scope.ytd-watch-metadata:has(.casualVoteMenuInner) > div.cbTitleButtonContainer > .cbCasualVoteButton {
             z-index: 9000 !important;
         }
     }
