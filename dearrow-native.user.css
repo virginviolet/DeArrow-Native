@@ -61,7 +61,7 @@
             height: 20px;
         }
 
-        /* Casual mode popup - Radio buttons */
+        /* Casual mode popup - radio buttons */
         span#cbSubmitMenu>div.casualVoteMenuInner>div.cbCasualYesOrNo>.cbChecklistBox>.cbChecklistCheckboxParent {
             display: flex !important;
             border: 1px solid var(--paper-checkbox-unchecked-color, var(--primary-text-color)) !important;
@@ -88,7 +88,7 @@
             font-weight: 500;
         }
 
-        /* Casual mode popup - Square checkboxes */
+        /* Casual mode popup - square checkboxes */
         #cbSubmitMenu>.casualVoteMenuInner>div>div>.cbChecklistBox.cbSquare input {
             border: 2px solid var(--paper-checkbox-unchecked-color, var(--primary-text-color)) !important;
             border-radius: 2px !important;
@@ -127,7 +127,7 @@
             font-size: 14px;
         }
 
-        /* Casual mode popup - Add an overlay behind the window and the vote button that opens it */
+        /* Casual mode popup - add an overlay behind the window and the vote button that opens it */
         #content:has(#cbSubmitMenu > .casualVoteMenuInner):after {
             content: '' !important;
             position: absolute !important;
